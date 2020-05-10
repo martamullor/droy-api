@@ -69,8 +69,8 @@ app.use('/styles', stylesRouter)
 app.use('/components', componentsRouter)
 
 app.use((error, req, res, next) => {
-  if (error.name === 'ValidationError') {
-    error = new ValidationError(error, 'ValidationError')
+  if (error.name === 'ValidatorError') {
+    error = new ValidatorError(error, 'ValidatorError')
   }
   if (error.name === 'MongoError') {
     error = new MongoError(error, 'MongoError')

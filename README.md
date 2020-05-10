@@ -21,7 +21,7 @@ API desarrollada para la herramienta online Droy.
 | Method  | Path  | Description  | Body  |
 |---|---|---|---|
 | GET  | `/projects/:id`  | Consulta la informacion de un proyecto de usuario  |   |
-| POST  | `/projects`  | Crea un nuevo proyecto para el usuario  | `{ currentUser, name, style, componentsConfiguration }`  |
+| POST  | `/projects`  | Crea un nuevo proyecto para el usuario  | `{ name, style, componentsConfiguration }`  |
 | PUT  | `/projects/:id`  | Modifica la informacion de un proyecto de usuario  | `{ componentsConfiguration }`  |
 | GET  | `/components`  | Consulta todos los componentes disponibles. Se puede filtrar el resultado con  ?style=stylename para conseguir solo los componentes especificos de un estilo. |  |
 | POST  | `/components`  | Crea un nuevo componente  | `{ code, defaultConfig, belongsToStyle, image }` 

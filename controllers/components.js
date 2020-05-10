@@ -3,7 +3,8 @@ var { ApiError } = require('../lib/errors')
 
 async function getAll (req, res, next) {
   try {
-    const components = await componentsService.getAll()
+    const { style: filterStyle } = req.query
+    const components = await componentsService.getAll(filterStyle)
     res.status(201).json(components)
   } catch (error) {
     next(error)

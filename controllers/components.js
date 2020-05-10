@@ -1,5 +1,4 @@
 const componentsService = require('../services/components')
-var { ApiError } = require('../lib/errors')
 
 async function getAll (req, res, next) {
   try {

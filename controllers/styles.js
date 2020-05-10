@@ -1,5 +1,4 @@
 const stylesService = require('../services/styles')
-var { ApiError } = require('../lib/errors')
 
 async function getAll (req, res, next) {
   try {

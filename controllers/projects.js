@@ -25,11 +25,10 @@ async function createProject (req, res, next) {
 
 async function updateProject (req, res, next) {
   try {
-    const { currentUser } = req.session
     const { projectId } = req.params
-    if (!currentUser.userProjects.includes(projectId)) throw new ApiError(401, 'Unauthorized')
+    const { currentUser } = req.session
     const { body: { componentsConfiguration } } = req
-    const updatedProject = await projectsService.updateProject(projectId, componentsConfiguration)
+    const updatedProject = await projectsService.updateProject(projectId, componentsConfiguration, currentUser)
     res.status(201).json(updatedProject)
   } catch (error) {
     next(error)

@@ -17,7 +17,9 @@ async function createProject (currentUser, name, style) {
   return project
 }
 
-async function updateProject (projectId, componentsConfiguration) {
+async function updateProject (projectId, componentsConfiguration, currentUser) {
+  const user = await User.findById(currentUser._id)
+  if (!user.userProjects.includes(projectId)) throw new ApiError(401, 'Its not your project')
   const updatedProject = await UserProject.findByIdAndUpdate(projectId, { componentsConfiguration }, { new: true })
   return updatedProject
 }

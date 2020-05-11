@@ -15,12 +15,12 @@ const userProjectSchema = new Schema({
   },
   componentsConfiguration: {
     type: [new Schema({
-      parentComponentCode: {
+      code: {
         type: String,
         required: true,
         trim: true
       },
-      componentInfo: {
+      info: {
         type: Object,
         required: true
       }

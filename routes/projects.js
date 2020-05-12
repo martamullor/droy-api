@@ -7,6 +7,7 @@ router.route('/:projectId')
   .get(isLoggedIn, projectsController.getProject)
 
 router.route('/')
+  .get(isLoggedIn, projectsController.getAll)
   .post(isLoggedIn, projectsController.createProject)
 
 router.route('/:projectId')

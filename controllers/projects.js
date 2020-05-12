@@ -1,6 +1,17 @@
 const projectsService = require('../services/projects')
 var { ApiError } = require('../lib/errors')
 
+async function getAll (req, res, next) {
+  try {
+    const { currentUser } = req.session
+    const allProjects = await projectsService.getAll(currentUser)
+    res.status(201).json(allProjects)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
 async function getProject (req, res, next) {
   try {
     const { projectId } = req.params
@@ -36,6 +47,7 @@ async function updateProject (req, res, next) {
 }
 
 module.exports = {
+  getAll,
   getProject,
   createProject,
   updateProject

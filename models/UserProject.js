@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
-const { String } = Schema.Types
+const { String, ObjectId } = Schema.Types
 
 const userProjectSchema = new Schema({
   name: {
@@ -12,6 +12,11 @@ const userProjectSchema = new Schema({
     type: String,
     required: true,
     trim: true
+  },
+  user: {
+    type: ObjectId,
+    ref: 'User',
+    required: true
   },
   componentsConfiguration: {
     type: [new Schema({

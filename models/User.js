@@ -22,10 +22,6 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  userProjects: {
-    type: [ObjectId],
-    default: []
-  }
 },
 {
   timestamps: true

@@ -2,29 +2,32 @@ const UserProject = require('../models/UserProject')
 const User = require('../models/User')
 const ApiError = require('../lib/errors')
 
+async function getAll (currentUser) {
+  console.log(111, currentUser)
+  return await UserProject.find({ user: currentUser._id }) 
+}
+
 async function getOne (projectId, currentUser) {
-  const user = await User.findById(currentUser._id)
-  if (!user.userProjects.includes(projectId)) throw new ApiError(401, 'Its not your project')
-  const project = await UserProject.findById(projectId)
-  return project
+  const userProject = await UserProject.findById(projectId)
+  if(!userProject.user === currentUser._id) throw new ApiError(401, 'Its not your project')
+  return userProject
 }
 
 async function createProject (currentUser, name, style) {
-  const project = await UserProject.create({ name, style })
-  const user = await User.findById(currentUser._id)
-  user.userProjects.push(project._id)
-  await user.save()
-  return project
+  return await UserProject.create({ name, style, user: currentUser._id })
+  
 }
 
 async function updateProject (projectId, componentsConfiguration, currentUser) {
-  const user = await User.findById(currentUser._id)
-  if (!user.userProjects.includes(projectId)) throw new ApiError(401, 'Its not your project')
-  const updatedProject = await UserProject.findByIdAndUpdate(projectId, { componentsConfiguration }, { new: true })
-  return updatedProject
+  const userProject = await UserProject.findById(projectId)
+  if(!userProject.user === currentUser._id) throw new ApiError(401, 'Its not your project')
+  userProject.componentsConfiguration = componentsConfiguration
+  // const updatedProject = await UserProject.findByIdAndUpdate(projectId, { componentsConfiguration }, { new: true })
+  return await userProject.save()
 }
 
 module.exports = {
+  getAll,
   getOne,
   createProject,
   updateProject

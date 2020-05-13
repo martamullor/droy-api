@@ -7,7 +7,17 @@ async function getAll (req, res, next) {
     const allProjects = await projectsService.getAll(currentUser)
     res.status(201).json(allProjects)
   } catch (error) {
-    console.log(error)
+    next(error)
+  }
+}
+
+async function deleteProject (req, res, next) {
+  try {
+    const { projectId } = req.params
+    const { currentUser } = req.session
+    const projects = await projectsService.deleteOne(projectId, currentUser)
+    res.status(201).json(projects)
+  } catch (error) {
     next(error)
   }
 }
@@ -50,5 +60,6 @@ module.exports = {
   getAll,
   getProject,
   createProject,
-  updateProject
+  updateProject,
+  deleteProject
 }

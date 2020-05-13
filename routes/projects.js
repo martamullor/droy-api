@@ -5,6 +5,7 @@ const { isLoggedIn } = require('../middlewares/auth')
 
 router.route('/:projectId')
   .get(isLoggedIn, projectsController.getProject)
+  .post(isLoggedIn, projectsController.deleteProject)
 
 router.route('/')
   .get(isLoggedIn, projectsController.getAll)

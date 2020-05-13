@@ -7,8 +7,8 @@ async function getAll (currentUser) {
 }
 
 async function deleteOne (projectId, currentUser) {
-  const userProject = await UserProject.findByIdAndDelete(projectId)
   if(!userProject.user === currentUser._id) throw new ApiError(401, 'Its not your project')
+  const userProject = await UserProject.findByIdAndDelete(projectId)
   return userProject
 }
 

@@ -1,12 +1,12 @@
 const projectsService = require('../services/projects')
-var { ApiError } = require('../lib/errors')
 
 async function getAll (req, res, next) {
   try {
-    const { currentUser } = req.session
-    const allProjects = await projectsService.getAll(currentUser)
+    const { userId } = req.params
+    const allProjects = await projectsService.getAll(userId)
     res.status(201).json(allProjects)
   } catch (error) {
+    console.log(error)
     next(error)
   }
 }
@@ -14,8 +14,7 @@ async function getAll (req, res, next) {
 async function deleteProject (req, res, next) {
   try {
     const { projectId } = req.params
-    const { currentUser } = req.session
-    const projects = await projectsService.deleteOne(projectId, currentUser)
+    const projects = await projectsService.deleteOne(projectId)
     res.status(201).json(projects)
   } catch (error) {
     next(error)
@@ -25,8 +24,7 @@ async function deleteProject (req, res, next) {
 async function getProject (req, res, next) {
   try {
     const { projectId } = req.params
-    const { currentUser } = req.session
-    const projects = await projectsService.getOne(projectId, currentUser)
+    const projects = await projectsService.getOne(projectId)
     res.status(201).json(projects)
   } catch (error) {
     next(error)
@@ -35,9 +33,9 @@ async function getProject (req, res, next) {
 
 async function createProject (req, res, next) {
   try {
-    const { currentUser } = req.session
+    const { userId } = req.params
     const { body: { name, style } } = req
-    const newProject = await projectsService.createProject(currentUser, name, style)
+    const newProject = await projectsService.createProject(userId, name, style)
     res.status(201).json(newProject)
   } catch (error) {
     next(error)
@@ -47,9 +45,8 @@ async function createProject (req, res, next) {
 async function updateProject (req, res, next) {
   try {
     const { projectId } = req.params
-    const { currentUser } = req.session
     const { body: { componentsConfiguration } } = req
-    const updatedProject = await projectsService.updateProject(projectId, componentsConfiguration, currentUser)
+    const updatedProject = await projectsService.updateProject(projectId, componentsConfiguration)
     res.status(201).json(updatedProject)
   } catch (error) {
     next(error)

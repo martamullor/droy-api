@@ -1,17 +1,16 @@
 var express = require('express')
 var router = express.Router()
 const projectsController = require('../controllers/projects')
-const { isLoggedIn } = require('../middlewares/auth')
 
 router.route('/:projectId')
-  .get(isLoggedIn, projectsController.getProject)
-  .delete(isLoggedIn, projectsController.deleteProject)
+  .get(projectsController.getProject)
+  .delete(projectsController.deleteProject)
 
-router.route('/')
-  .get(isLoggedIn, projectsController.getAll)
-  .post(isLoggedIn, projectsController.createProject)
+router.route('/user/:userId')
+  .get(projectsController.getAll)
+  .post(projectsController.createProject)
 
 router.route('/:projectId')
-  .put(isLoggedIn, projectsController.updateProject)
+  .put(projectsController.updateProject)
 
 module.exports = router

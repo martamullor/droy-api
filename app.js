@@ -5,10 +5,7 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const { ValidationError, MongoError } = require('./lib/errors')
 const mongoose = require('mongoose')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
 const cors = require('cors')
-var authRouter = require('./routes/auth')
 var indexRouter = require('./routes/index')
 var projectsRouter = require('./routes/projects')
 var stylesRouter = require('./routes/styles')
@@ -46,24 +43,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(
-  session({
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
-    }),
-    secret: process.env.SECRET_SESSION,
-    resave: true,
-    saveUninitialized: true,
-    name: 'droyAuthCookie',
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000
-    }
-  })
-)
 
 app.use('/', indexRouter)
-app.use('/auth', authRouter)
 app.use('/projects', projectsRouter)
 app.use('/styles', stylesRouter)
 app.use('/components', componentsRouter)

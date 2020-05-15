@@ -14,8 +14,7 @@ const userProjectSchema = new Schema({
     trim: true
   },
   user: {
-    type: ObjectId,
-    ref: 'User',
+    type: String,
     required: true
   },
   componentsConfiguration: {

@@ -18,10 +18,9 @@ const componentSchema = new Schema({
     required: true,
     trim: true
   },
-  image: {
-    type: String,
-    required: true,
-    trim: true
+  thumbnail: {
+    name: String,
+    height: String
   }
 },
 {

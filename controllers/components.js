@@ -12,8 +12,8 @@ async function getAll (req, res, next) {
 
 async function createOne (req, res, next) {
   try {
-    const { body: { code, defaultConfig, belongsToStyle, image } } = req
-    const component = await componentsService.createComponent(code, defaultConfig, belongsToStyle, image)
+    const { body: { code, defaultConfig, belongsToStyle, thumbnail } } = req
+    const component = await componentsService.createComponent(code, defaultConfig, belongsToStyle, thumbnail)
     res.status(201).json(component)
   } catch (error) {
     next(error)

@@ -6,7 +6,6 @@ async function getAll (req, res, next) {
     const allProjects = await projectsService.getAll(userId)
     res.status(201).json(allProjects)
   } catch (error) {
-    console.log(error)
     next(error)
   }
 }

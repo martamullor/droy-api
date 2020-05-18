@@ -27,6 +27,11 @@ const userProjectSchema = new Schema({
       info: {
         type: Object,
         required: true
+      },
+      componentType: {
+        type: String,
+        required: true,
+        trim: true
       }
     })]
   }

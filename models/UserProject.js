@@ -32,7 +32,8 @@ const userProjectSchema = new Schema({
         type: String,
         required: true,
         trim: true
-      }
+      },
+      componentUserOverrideStyle: Object
     })]
   }
 

@@ -21,7 +21,12 @@ const componentSchema = new Schema({
   thumbnail: {
     name: String,
     height: String
-  }
+  },
+  componentType: {
+    type: String,
+    required: true,
+    trim: true
+  },
 },
 {
   timestamps: true

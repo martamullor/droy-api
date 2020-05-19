@@ -21,6 +21,11 @@ const componentSchema = new Schema({
   thumbnail: {
     name: String,
     height: String
+  },
+  componentOptions: {
+    type: Array,
+    required: true,
+    default: []
   }
 },
 {

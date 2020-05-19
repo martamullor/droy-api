@@ -28,10 +28,10 @@ const userProjectSchema = new Schema({
         type: Object,
         required: true
       },
-      componentType: {
-        type: String,
+      componentOptions: {
+        type: Array,
         required: true,
-        trim: true
+        default: []
       },
       componentUserOverrideStyle: Object
     })]

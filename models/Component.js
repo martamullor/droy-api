@@ -26,6 +26,11 @@ const componentSchema = new Schema({
     type: Array,
     required: true,
     default: []
+  },
+  componentStyle: {
+    type: Object,
+    required: true,
+    default: {}
   }
 },
 {

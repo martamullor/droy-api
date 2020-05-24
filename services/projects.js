@@ -12,6 +12,12 @@ async function getOne (projectId) {
   return await UserProject.findById(projectId)
 }
 
+async function deploy (projectId) {
+  const project = await UserProject.findById(projectId)
+  project.deployedConfiguration = { ...project.componentsConfiguration }
+  return await project.save()
+}
+
 async function createProject (userId, name, style) {
   return await UserProject.create({ name, style, user: userId })
 }
@@ -27,5 +33,6 @@ module.exports = {
   getOne,
   createProject,
   updateProject,
-  deleteOne
+  deleteOne,
+  deploy
 }

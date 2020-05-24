@@ -30,7 +30,7 @@ var app = express()
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.FRONTEND_DOMAIN, process.env.FRONTEND_DOMAIN_LOCALHOST]
+    origin: [process.env.FRONTEND_DOMAIN, process.env.FRONTEND_DOMAIN_LOCALHOST, /my-droy\.com$/]
   })
 )
 

@@ -6,6 +6,9 @@ router.route('/:projectId')
   .get(projectsController.getProject)
   .delete(projectsController.deleteProject)
 
+router.route('/:projectId/deploy')
+  .get(projectsController.deployProject)
+
 router.route('/user/:userId')
   .get(projectsController.getAll)
   .post(projectsController.createProject)

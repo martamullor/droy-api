@@ -30,6 +30,16 @@ async function getProject (req, res, next) {
   }
 }
 
+async function deployProject (req, res, next) {
+  try {
+    const { projectId } = req.params
+    const projects = await projectsService.deploy(projectId)
+    res.status(201).json(projects)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function createProject (req, res, next) {
   try {
     const { userId } = req.params
@@ -57,5 +67,6 @@ module.exports = {
   getProject,
   createProject,
   updateProject,
-  deleteProject
+  deleteProject,
+  deployProject
 }

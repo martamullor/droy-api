@@ -36,7 +36,7 @@ const userProjectSchema = new Schema({
       componentUserOverrideStyle: Object
     })]
   },
-  deployedConfiguration: Object
+  deployedConfiguration: [Object]
 },
 {
   timestamps: true

@@ -14,7 +14,7 @@ async function getOne (projectId) {
 
 async function deploy (projectId) {
   const project = await UserProject.findById(projectId)
-  project.deployedConfiguration = { ...project.componentsConfiguration }
+  project.deployedConfiguration = [...project.componentsConfiguration]
   return await project.save()
 }
 

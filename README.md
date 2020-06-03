@@ -18,7 +18,6 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 | POST  | `/components`  | Creates one compoenent  |
 | GET  | `/styles`  | Gets all the styles  |
 | POST  | `/styles`  | Creates one style  |
-` 
 
 ## Models
 

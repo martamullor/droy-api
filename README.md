@@ -7,7 +7,7 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 ## Endpoints
 
 | Method  | Path  | Description  |
-|---|---|---|---|
+|---|---|---|
 | GET  | `/projects/:id`  | Gets the details of the target project  |
 | DELETE  | `/projects/:id`  | Deletes the target project  |
 | PUT  | `/projects/:id`  | Updates target project  |
@@ -24,7 +24,7 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 
 ### Component
 
-```json
+```javascript
 {
   code: {
     type: String,
@@ -61,7 +61,7 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 
 ### Style
 
-```json
+```javascript
 {
   code: {
     type: String,
@@ -96,7 +96,7 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 
 ### User Project
 
-```json
+```javascript
 {
   name: {
     type: String,
@@ -138,8 +138,11 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 ## Links
 
 [Link to Trello](https://trello.com/b/Krfo4Qp5/droy)
-[Droy](https://github.com/marcmnc7/droy)
-[Droy-API](https://github.com/marcmnc7/droy-api)
-[Droy-Deploy](https://github.com/marcmnc7/droy-deploy)
-[Slides](https://docs.google.com/presentation/d/1uFGmgLAgxeSe85KBZDAyAb9DgJ9LqC1k4Wlm6_MQMug/edit#slide=id.p)
 
+[Droy](https://github.com/marcmnc7/droy)
+
+[Droy-API](https://github.com/marcmnc7/droy-api)
+
+[Droy-Deploy](https://github.com/marcmnc7/droy-deploy)
+
+[Slides](https://docs.google.com/presentation/d/1uFGmgLAgxeSe85KBZDAyAb9DgJ9LqC1k4Wlm6_MQMug/edit#slide=id.p)

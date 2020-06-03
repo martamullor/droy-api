@@ -15,7 +15,7 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 | GET  | `/projects/:id/:userId`  | Gets all projects for the specified user  |
 | POST  | `/projects/:id/:userId`  | Creates one user project  |
 | GET  | `/components`  | Gets all the components. It can be filtered with the query param `?style=stylename` |
-| POST  | `/components`  | Creates one compoenent  |
+| POST  | `/components`  | Creates one component  |
 | GET  | `/styles`  | Gets all the styles  |
 | POST  | `/styles`  | Creates one style  |
 
@@ -133,6 +133,15 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
   deployedConfiguration: [Object]
 }
 ```
+
+## ⚡️Demo 
+
+[A demo is worth a thousand words](https://droy-prod.web.app/about)
+
+## Contribute
+
+Show your ❤️ and support by giving a ⭐. 
+Any suggestions are welcome!
 
 ## Links
 

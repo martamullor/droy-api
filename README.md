@@ -134,6 +134,15 @@ This API is developed for the [Droy](https://github.com/marcmnc7/droy) applicati
 }
 ```
 
+## Demo 
+
+[A demo is worth a thousand words](https://droy-prod.web.app/about)
+
+## Contribute
+
+Show your ❤️ and support by giving a ⭐. 
+Any suggestions are welcome!
+
 ## Links
 
 [Link to Trello](https://trello.com/b/Krfo4Qp5/droy)

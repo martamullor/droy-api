@@ -1,82 +1,147 @@
+![Droy Builder Logo](https://firebasestorage.googleapis.com/v0/b/droy-dev.appspot.com/o/public%2Fdroy_logo.png?alt=media&token=c6f641e9-d3b3-46e7-9b1a-24377b8b35df)
+
 # API Droy
 
-* * *
-
-## Description 
-
-API desarrollada para la herramienta online Droy.
-
-* * *
-
-## User Stories
-
-- Permite realizar las acciones de login, logout y signup. 
-- Permite gestionar proyectos de usuario y su informacion. 
-- Permite gestionar el resto de contenido de la aplicacion: Estilos, Componentes...
-
-* * *
+This API is developed for the [Droy](https://github.com/marcmnc7/droy) application. It allows you manage projects and their information, default components and their information and styles and their information. Coded under the MVC pattern.
 
 ## Endpoints
 
-| Method  | Path  | Description  | Body  |
-|---|---|---|---|
-| GET  | `/projects/:id`  | Consulta la informacion de un proyecto de usuario  |   |
-| POST  | `/projects`  | Crea un nuevo proyecto para el usuario  | `{ name, style, componentsConfiguration }`  |
-| PUT  | `/projects/:id`  | Modifica la informacion de un proyecto de usuario  | `{ componentsConfiguration }`  |
-| GET  | `/components`  | Consulta todos los componentes disponibles. Se puede filtrar el resultado con  ?style=stylename para conseguir solo los componentes especificos de un estilo. |  |
-| POST  | `/components`  | Crea un nuevo componente  | `{ code, defaultConfig, belongsToStyle, image }` 
-| GET  | `/styles`  | Consulta todos los estilos disponibles  |  |
-| POST  | `/styles`  | Crea un nuevo estilo  | `{ code, className, name, description, image }` 
-| GET  | `/auth/whoami`  | Consulta si estoy logeado y con quien  |  |
-| GET  | `/auth/logout`  | Desloguea el usuario  |  |
-| POST  | `/auth/login`  | Loguea un usuario  | `{ email, hashedPassword }` 
-| POST  | `/auth/signup`  | Registra un usuario  | `{ email, hashedPassword, name }`
-
-* * *
+| Method  | Path  | Description  |
+|---|---|---|
+| GET  | `/projects/:id`  | Gets the details of the target project  |
+| DELETE  | `/projects/:id`  | Deletes the target project  |
+| PUT  | `/projects/:id`  | Updates target project  |
+| GET  | `/projects/:id/deploy`  | Saves the actual saved configuration to deployed configuration  |
+| GET  | `/projects/:id/:userId`  | Gets all projects for the specified user  |
+| POST  | `/projects/:id/:userId`  | Creates one user project  |
+| GET  | `/components`  | Gets all the components. It can be filtered with the query param `?style=stylename` |
+| POST  | `/components`  | Creates one compoenent  |
+| GET  | `/styles`  | Gets all the styles  |
+| POST  | `/styles`  | Creates one style  |
 
 ## Models
 
+### Component
+
 ```javascript
-
-User = {
-  name: "Bob",
-  email: "bob@marley.com",
-  password: "····",
-  userProjects: [userProjectObjectId, ...]
+{
+  code: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  defaultConfig: {
+    type: Object,
+    required: true
+  },
+  belongsToStyle: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  thumbnail: {
+    name: String,
+    height: String
+  },
+  componentOptions: {
+    type: Array,
+    required: true,
+    default: []
+  },
+  componentStyle: {
+    type: Object,
+    required: true,
+    default: {}
+  }
 }
 
-UserProject = {
-  name: "My First Project",
-  style: "Classic",
-  componentsConfiguration: [{
-    parentComponentCode: "classic-heading-1",
-    componentInfo: { text1: "Hello", text2: "World"},
-    ...
-  }]
-}
+```
 
-Components = {
-  code: "heading-1",
-  defaultConfig: { text1: "Default Hello", text2: "Default World" },
-  belongsToStyle: "classic",
-  image: "https://..."
-}
+### Style
 
-Styles = {
-  code: "classic",
-  name: "Classic",
-  image: "https://...",
-  description: "This is the most classic style.",
-  className: "classic"
+```javascript
+{
+  code: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  className: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  description: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  image: {
+    type: String,
+    required: true,
+    trim: true
+  }
 }
+```
 
+### User Project
+
+```javascript
+{
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  style: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  user: {
+    type: String,
+    required: true
+  },
+  componentsConfiguration: {
+    type: [new Schema({
+      code: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      info: {
+        type: Object,
+        required: true
+      },
+      componentOptions: {
+        type: Array,
+        required: true,
+        default: []
+      },
+      componentUserOverrideStyle: Object
+    })]
+  },
+  deployedConfiguration: [Object]
+}
 ```
 
 ## Links
 
 [Link to Trello](https://trello.com/b/Krfo4Qp5/droy)
 
-[Github](https://github.com/marcmnc7/droy)
+[Droy](https://github.com/marcmnc7/droy)
 
-[Presentación](https://docs.google.com/presentation/d/1uFGmgLAgxeSe85KBZDAyAb9DgJ9LqC1k4Wlm6_MQMug/edit#slide=id.p)
+[Droy-API](https://github.com/marcmnc7/droy-api)
 
+[Droy-Deploy](https://github.com/marcmnc7/droy-deploy)
+
+[Slides](https://docs.google.com/presentation/d/1uFGmgLAgxeSe85KBZDAyAb9DgJ9LqC1k4Wlm6_MQMug/edit#slide=id.p)
